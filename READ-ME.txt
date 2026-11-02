@@ -1,0 +1,61 @@
+NEURO ATLAS — INTERACTIVE BRAIN EXPLORER
+
+Interactive 3D human brain anatomy, region functions, learning mechanisms,
+open questions, and linked scientific evidence. The interface runs entirely
+in the browser and can be hosted as a static website on GitHub Pages.
+
+Start
+Open a terminal in this folder and run:
+  npm start
+Then open http://localhost:4173
+
+Requires Node.js 18 or newer. All libraries, anatomy, and content are included;
+no package installation or internet connection is needed to run the explorer.
+The literature links open external websites when selected.
+
+Explore
+- The dark interface opens with both side panels hidden.
+- Use Region library to browse or search; click the brain to open its details.
+- Use Region details to reopen the current selection; close either panel with ×.
+- Press / to open search, or Escape to dismiss the panels.
+- Click a colored area or choose a region from the library.
+- Search for functions such as vision, emotion, reward, or memory.
+- Drag the brain to rotate, scroll to zoom, or use L/R/Top/Front views.
+- Inside reveals deep anatomy; Separate moves the hemispheres apart.
+- Connections shows conceptual relationships, not measured fiber tracts.
+- Follow a learning process offers three curated conceptual journeys.
+- Save regions with the star, add local notes, and export them via About.
+
+Scope and accuracy
+This first release contains curated introductory region descriptions, proposed
+learning mechanisms, open questions, and linked sources. It is not an exhaustive
+literature review. Findings and hypotheses must be read in their task, method,
+species, and population context.
+
+Cortical surfaces and deep meshes are aligned derivatives of the FreeSurfer
+fsaverage reference brain. Desikan–Killiany parcels are anatomical definitions,
+not precise functional boundaries. Some broad functional entries group several
+anatomical parcels. Small unresolved nuclei are shown as explicitly labeled
+schematic diamond markers. Coordinates and region extents are not suitable for
+measurement or clinical targeting.
+
+See assets/atlas-source.json for complete geometry provenance, processing,
+limitations, and licenses, including the original FreeSurfer license text.
+The local Three.js library license is vendor/THREE-LICENSE.txt.
+
+Privacy
+When run locally, the server listens only on this computer (127.0.0.1).
+When hosted online, the host serves the website files. Searches stay in the page.
+Saved regions and notes use this browser's local storage. Clearing site data
+removes them; use Export to keep a JSON copy.
+Notes are not uploaded or shared between devices, browsers, or website addresses.
+
+Files
+index.html / styles.css     Interface
+app.js                     Interaction and 3D rendering
+data/regions.js            Curated region and learning-journey content
+assets/brain.json          Anatomical meshes and labels
+assets/atlas-source.json   Dataset provenance and license notices
+server.mjs                 Small local static server
+
+To use a different port: PORT=4174 npm start

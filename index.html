@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A research companion for exploring human brain anatomy, function, and the mechanisms of learning.">
+  <title>Neuro Atlas — The learning brain</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="dark.css">
+  <meta name="color-scheme" content="dark">
+  <script type="importmap">{"imports":{"three":"./vendor/three.module.js","three/addons/":"./vendor/"}}</script>
+</head>
+<body>
+  <header class="app-header">
+    <a class="brand" href="./" aria-label="Neuro Atlas home"><span class="brand-mark" aria-hidden="true">n</span><span>neuro<span class="brand-light">atlas</span><small>A FIELD GUIDE TO THE LEARNING BRAIN</small></span></a>
+    <nav class="mode-switch" aria-label="Explorer mode"><button id="explore-mode" class="active">Explore the brain</button><button id="learn-mode">Follow a learning process <span>↗</span></button></nav>
+    <div class="header-actions"><button class="panel-toggle" id="toggle-library" aria-expanded="false" aria-controls="region-sidebar">Region library</button><button class="panel-toggle" id="toggle-details" aria-expanded="false" aria-controls="detail-panel">Region details</button><button class="icon-button" id="info-button" title="About this atlas" aria-label="About this atlas">ⓘ</button></div>
+  </header>
+  <main class="workspace">
+    <aside class="sidebar" id="region-sidebar" aria-label="Brain regions" hidden>
+      <div class="sidebar-title"><span>REGION LIBRARY</span><div class="panel-actions"><span id="region-count" class="count">28</span><button class="icon-button panel-close" id="close-library" aria-label="Close region library">×</button></div></div>
+      <label class="search-box"><span aria-hidden="true">⌕</span><input id="region-search" type="search" placeholder="Region, function, or process…" aria-label="Search regions, functions, or learning processes"><kbd>/</kbd></label>
+      <div class="library-tabs" aria-label="Library filter"><button class="active" id="all-regions">All regions</button><button id="saved-regions">Saved <span id="saved-count">0</span></button></div>
+      <div id="region-list" class="region-list"></div>
+    </aside>
+    <section class="canvas-panel" aria-label="Interactive 3D brain">
+      <div class="canvas-heading"><div><div class="eyebrow" id="canvas-eyebrow">ANATOMY / FUNCTION / LEARNING</div><h1 id="canvas-title">A brain. Many ways to learn.</h1><p id="canvas-subtitle">Select a region to explore its role in the bigger picture.</p></div><button class="text-button" id="reset-view" title="Reset camera">↺ Reset view</button></div>
+      <div class="viewport" id="viewport"><canvas id="brain-canvas" aria-label="3D human brain. Drag to rotate, scroll to zoom. Regions are also selectable from the library."></canvas><div class="loading" id="loading"><span class="loading-orbit"></span><strong>Preparing the brain atlas</strong><span>Loading local anatomical surfaces…</span></div><div class="hover-label" id="hover-label" hidden></div><div class="view-orientation" aria-hidden="true"><span id="orientation-label">LEFT · LATERAL</span></div><div class="view-caption"><span class="status-dot"></span><span id="geometry-caption">fsaverage5 · cortical surface</span></div><div class="selection-label" id="selection-label" hidden><span class="selection-dot"></span><div><small>SELECTED REGION</small><strong id="selection-name">Hippocampal formation</strong></div></div></div>
+      <div id="learning-panel" class="learning-panel" hidden><div class="learning-panel-top"><div class="eyebrow">LEARNING JOURNEYS</div><select id="path-select" aria-label="Select learning process"></select></div><p id="path-description"></p><div id="path-steps" class="path-steps"></div><div class="journey-note">A conceptual guide to interacting systems; not a measured sequence of brain activity.</div></div>
+      <div class="viewport-controls"><div class="control-group" aria-label="Surface display"><button id="surface-mode" class="active">Surface</button><button id="deep-mode">Inside</button></div><div class="control-divider"></div><label class="split-control" title="Separate the hemispheres"><span>Separate</span><input id="split-range" type="range" min="0" max="65" value="0" aria-label="Separate hemispheres"></label><div class="control-divider"></div><button id="connections-toggle" class="control-button" aria-pressed="false"><span aria-hidden="true">⌘</span> Connections</button><button id="rotate-toggle" class="control-button" aria-pressed="false" title="Rotate brain slowly">↻</button></div>
+      <div class="canvas-footer"><span><b>Drag</b> to rotate <span class="dot-divider">·</span> <b>Scroll</b> to zoom <span class="dot-divider">·</span> <b>Click</b> to explore</span><button class="text-button" id="anatomy-info">Anatomy &amp; evidence notes ↗</button></div>
+    </section>
+    <aside class="detail-panel" id="detail-panel" aria-label="Selected region details" hidden>
+      <div class="detail-top"><div class="eyebrow" id="detail-group">MEMORY & LEARNING</div><div class="panel-actions"><button class="icon-button" id="save-region" title="Save region" aria-label="Save region" aria-pressed="false">☆</button><button class="icon-button panel-close" id="close-details" aria-label="Close region details">×</button></div></div>
+      <h2 id="detail-title">Hippocampal formation</h2><p class="detail-subtitle" id="detail-subtitle"></p>
+      <div id="role-chips" class="role-chips"></div>
+      <div class="detail-tabs" role="tablist" aria-label="Region information"><button class="active" id="tab-overview" role="tab" aria-selected="true" aria-controls="detail-content">Overview</button><button id="tab-learning" role="tab" aria-selected="false" aria-controls="detail-content">Learning</button><button id="tab-evidence" role="tab" aria-selected="false" aria-controls="detail-content">Evidence</button></div>
+      <div id="detail-content" class="detail-content" role="tabpanel" aria-labelledby="tab-overview"></div>
+      <div class="detail-footer"><span class="status-dot"></span>Curated guide · evidence varies by claim</div>
+    </aside>
+  </main>
+  <dialog id="about-dialog"><button class="dialog-close icon-button" id="close-dialog" aria-label="Close notes">×</button><div class="eyebrow">ABOUT THIS WORKSPACE</div><h2>Anatomy is the starting point.</h2><p>Neuro Atlas connects named brain regions to their functions, learning mechanisms, and open questions. Functional roles overlap across circuits; each description is a starting point for reading the evidence.</p><div class="about-grid"><section><h3>What the geometry shows</h3><p id="about-geometry">The cortical surfaces come from the fsaverage5 reference brain. Atlas boundaries define anatomical parcels, not exclusive functional modules. Deep structures use labeled schematic markers unless an anatomical mesh is available.</p></section><section><h3>How to read the evidence</h3><p>“Supported” identifies a finding or mechanism with substantial relevant evidence. “Hypothesis” identifies a proposed account. “Mixed evidence” signals important qualifications. These labels are curated summaries, not systematic evidence grades.</p></section><section><h3>Connections are conceptual</h3><p>Lines show selected functional relationships. They are not reconstructed fiber tracts, and do not encode direction, strength, or exhaustive connectivity.</p></section><section><h3>Your local workspace</h3><p>Saved regions and personal notes stay in this browser. Notes and searches remain in this browser; they are not uploaded.</p></section></div><div id="atlas-attribution" class="atlas-attribution"></div><button class="primary-button" id="export-notes">Export saved regions & notes</button></dialog>
+  <div id="toast" role="status" class="toast" hidden></div>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

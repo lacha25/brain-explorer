@@ -1,0 +1,90 @@
+{
+  "title": "fsaverage cortical and subcortical anatomy",
+  "template": "FreeSurfer fsaverage from MNE fsaverage-1.1, sampled onto fsaverage5 topology",
+  "atlas": "Desikan–Killiany (aparc), 34 cortical parcels per hemisphere; aseg deep structures",
+  "coordinates": "FreeSurfer surface/tkReg RAS in millimeters: x right, y anterior, z superior. No individual mesh translation or scaling applied.",
+  "created": "2026-11-01",
+  "geometryType": "Actual template geometry, processed for interactive display. This file is a modified derivative, not an original FreeSurfer distribution.",
+  "cortex": {
+    "template": "MNE fsaverage-1.1 pial coordinates on fsaverage5 topology",
+    "verticesPerHemisphere": 10242,
+    "trianglesPerHemisphere": 20480,
+    "atlasLabelsPerHemisphere": 34,
+    "labelScheme": "Desikan–Killiany aparc. unknown and corpuscallosum are non-parcel labels. atlasLabelNames stored per hemisphere.",
+    "annotationTransfer": "Labels from fsaverage aparc copied at exactly matching spherical vertices. Verified both fsaverage5 sphere coordinates equal fsaverage sphere coordinates at indices 0–10241, with zero coordinate error.",
+    "coordinateRoundingMm": 0.001,
+    "source": "https://github.com/mne-tools/mne-data/releases/download/fsaverage-1.1/fsaverage-root.zip",
+    "topologySource": "https://github.com/nilearn/nilearn/tree/cccc7ab5b157fcd2e747323ace72599a3a04fb98/nilearn/datasets/data/fsaverage5",
+    "geometrySource": "fsaverage/surf/lh.pial and rh.pial, vertices 0–10241; same MNE release as aseg and aparc labels. fsaverage5 sphere coordinates and topology determine downsampling; original MNE fsaverage pial coordinates preserve registration.",
+    "sourceCommit": "cccc7ab5b157fcd2e747323ace72599a3a04fb98"
+  },
+  "deep": {
+    "template": "FreeSurfer fsaverage from MNE fsaverage-1.1",
+    "source": "https://github.com/mne-tools/mne-data/releases/download/fsaverage-1.1/fsaverage-root.zip",
+    "segmentation": "fsaverage/mri/aseg.mgz",
+    "processing": "Binary aseg labels; Gaussian smoothing sigma 0.65 voxels; marching cubes level 0.5; main connected component; quadric mesh simplification. Cerebellum combines cortex and white-matter labels.",
+    "transform": "MGH header vox2ras_tkr; same fsaverage RAS coordinate frame as pial surfaces.",
+    "resolvedStructures": [
+      "thalamus",
+      "caudate",
+      "putamen",
+      "pallidum",
+      "hippocampus",
+      "amygdala",
+      "nucleus-accumbens",
+      "cerebellum",
+      "brainstem"
+    ],
+    "notResolved": [
+      "hypothalamus",
+      "basal forebrain",
+      "locus coeruleus",
+      "raphe nuclei",
+      "subthalamic nucleus",
+      "substantia nigra"
+    ]
+  },
+  "caveats": [
+    "Population-average template, not an individual human brain.",
+    "Anatomical parcels do not uniquely define functional areas or cognitive modules.",
+    "Simplified surface boundaries are for exploration, not measurement or clinical targeting.",
+    "Hemisphere separation, opacity, or display scaling in a viewer are presentation operations; original vertices in this asset remain registered.",
+    "Hypothalamus, basal forebrain, locus coeruleus, raphe, subthalamic nucleus, and substantia nigra are not resolved by these source segmentations; any displayed proxies must be explicitly labeled schematic."
+  ],
+  "references": [
+    {
+      "title": "Desikan et al. (2006). An automated labeling system for subdividing the human cerebral cortex on MRI scans into gyral based regions of interest.",
+      "url": "https://doi.org/10.1016/j.neuroimage.2006.01.021"
+    },
+    {
+      "title": "Fischl et al. (1999). High-resolution intersubject averaging and a coordinate system for the cortical surface.",
+      "url": "https://doi.org/10.1002/(SICI)1097-0193(1999)8:4<272::AID-HBM10>3.0.CO;2-4"
+    },
+    {
+      "title": "Nilearn fsaverage documentation",
+      "url": "https://nilearn.github.io/stable/modules/generated/nilearn.datasets.fetch_surf_fsaverage.html"
+    },
+    {
+      "title": "MNE fsaverage documentation",
+      "url": "https://mne.tools/stable/generated/mne.datasets.fetch_fsaverage.html"
+    }
+  ],
+  "licenses": [
+    {
+      "name": "FreeSurfer Software License Agreement, Version 1.0 (February 2011), Part B",
+      "url": "https://surfer.nmr.mgh.harvard.edu/fswiki/FreeSurferSoftwareLicense",
+      "notice": "All or portions of this licensed product (such portions are the \"Software\") have been obtained under license from The General Hospital Corporation and are subject to the following terms and conditions:",
+      "text": "PART B. DOWNLOADING AGREEMENT License from MGH with Right to Sublicense (\"Software License\") As used in this Software License, \"you\" means the individual downloading and/or using, reproducing, modifying, displaying and/or distributing the Software and the institution or entity which employs or is otherwise affiliated with such individual in connection therewith. The General Hospital Corporation, Boston MA, USA (\"MGH\") hereby grants you, with right to sublicense, with respect to MGH's rights in the software, and data, if any, which is the subject of this Software License (collectively, the \"Software\"), a royalty-free, non-exclusive license to use, reproduce, make derivative works of, display and distribute the Software, provided that: (a) you accept and adhere to all of the terms and conditions of this Software License; (b) in connection with any copy of or sublicense of all or any portion of the Software, all of the terms and conditions in this Software License shall appear in and shall apply to such copy and such sublicense, including without limitation all source and executable forms and on any user documentation, prefaced with the following words: \"All or portions of this licensed product (such portions are the \"Software\") have been obtained under license from The General Hospital Corporation and are subject to the following terms and conditions:\" (c) you preserve and maintain all applicable attributions, copyright notices and licenses included in or applicable to the Software; (d) modified versions of the Software must be clearly identified and marked as such, and must not be misrepresented as being the original Software; and (e) you consider making, but are under no obligation to make, the source code of any of your modifications to the Software freely available to others on an open source basis. The license granted in this Software License includes without limitation the right to (i) incorporate the Software into proprietary programs (subject to any restrictions applicable to such programs), (ii) add your own copyright statement to your modifications of the Software, and (iii) provide additional or different license terms and conditions in your sublicenses of modifications of the Software; provided that in each case your use, reproduction or distribution of such modifications otherwise complies with the conditions stated in this Software License. This Software License does not grant any rights with respect to third party software, except those rights that MGH has been authorized by a third party to grant to you, and accordingly you are solely responsible for (i) obtaining any permissions from third parties that you need to use, reproduce, make derivative works of, display and distribute the Software, and (ii) informing your sublicensees, including without limitation your end-users, of their obligations to secure any such required permissions. The Software has been designed for research purposes only and has not been reviewed or approved by the Food and Drug Administration or by any other agency. YOU ACKNOWLEDGE AND AGREE THAT CLINICAL APPLICATIONS ARE NEITHER RECOMMENDED NOR ADVISED. Any commercialization of the Software is at the sole risk of the party or parties engaged in such commercialization. You further agree to use, reproduce, make derivative works of, display and distribute the Software in compliance with all applicable governmental laws, regulations and orders, including without limitation those relating to export and import control. The Software is provided \"AS IS\" and neither MGH nor any contributor to the software (each a \"Contributor\") shall have any obligation to provide maintenance, support, updates, enhancements or modifications thereto. MGH AND ALL CONTRIBUTORS SPECIFICALLY DISCLAIM ALL EXPRESS AND IMPLIED WARRANTIES OF ANY KIND INCLUDING, BUT NOT LIMITED TO, ANY WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL MGH OR ANY CONTRIBUTOR BE LIABLE TO ANY PARTY FOR DIRECT, INDIRECT, SPECIAL, INCIDENTAL, EXEMPLARY OR CONSEQUENTIAL DAMAGES HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY ARISING IN ANY WAY RELATED TO THE SOFTWARE, EVEN IF MGH OR ANY CONTRIBUTOR HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. TO THE MAXIMUM EXTENT NOT PROHIBITED BY LAW OR REGULATION, YOU FURTHER ASSUME ALL LIABILITY FOR YOUR USE, REPRODUCTION, MAKING OF DERIVATIVE WORKS, DISPLAY, LICENSE OR DISTRIBUTION OF THE SOFTWARE AND AGREE TO INDEMNIFY AND HOLD HARMLESS MGH AND ALL CONTRIBUTORS FROM AND AGAINST ANY AND ALL CLAIMS, SUITS, ACTIONS, DEMANDS AND JUDGMENTS ARISING THEREFROM. None of the names, logos or trademarks of MGH or any of MGH's affiliates or any of the Contributors, or any funding agency, may be used to endorse or promote products produced in whole or in part by operation of the Software or derived from or based on the Software without specific prior written permission from the applicable party. Any use, reproduction or distribution of the Software which is not in accordance with this Software License shall automatically revoke all rights granted to you under this Software License and render Paragraphs 1 and 2 of this Software License null and void. This Software License does not grant any rights in or to any intellectual property owned by MGH or any Contributor except those rights expressly granted hereunder."
+    },
+    {
+      "name": "Nilearn BSD-3-Clause",
+      "url": "https://github.com/nilearn/nilearn/blob/main/LICENSE",
+      "text": "Copyright (c) The nilearn developers.\nAll rights reserved.\n\nRedistribution and use in source and binary forms, with or without\nmodification, are permitted provided that the following conditions\nare met:\n1. Redistributions of source code must retain the above copyright\n   notice, this list of conditions and the following disclaimer.\n2. Redistributions in binary form must reproduce the above copyright\n   notice, this list of conditions and the following disclaimer in the\n   documentation and/or other materials provided with the distribution.\n3. Neither the name of the University nor the names of its contributors\n   may be used to endorse or promote products derived from this software\n   without specific prior written permission.\n\nTHIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS ``AS IS'' AND\nANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE\nIMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE\nARE DISCLAIMED.  IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE\nFOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL\nDAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS\nOR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)\nHOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT\nLIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY\nOUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF\nSUCH DAMAGE.\n"
+    }
+  ],
+  "asset": {
+    "file": "brain.json",
+    "bytes": 1866290,
+    "sha256": "4bb563adb07e7987bd952f8cd0dfe517fae9e252baf7db794a9f5ce7480b18e5"
+  }
+}
